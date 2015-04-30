@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25D0756E1AF2A69F0042307A /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D0756D1AF2A69F0042307A /* Goal.swift */; };
+		25D075701AF2A98E0042307A /* GoalDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D0756F1AF2A98E0042307A /* GoalDAO.swift */; };
+		25D075721AF2AC6E0042307A /* CategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D075711AF2AC6E0042307A /* CategoryType.swift */; };
 		330BE7981AF15F2400369ED8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330BE7971AF15F2400369ED8 /* AppDelegate.swift */; };
 		330BE79A1AF15F2400369ED8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330BE7991AF15F2400369ED8 /* ViewController.swift */; };
 		330BE79D1AF15F2400369ED8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 330BE79B1AF15F2400369ED8 /* Main.storyboard */; };
@@ -26,6 +29,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		25D0756D1AF2A69F0042307A /* Goal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		25D0756F1AF2A98E0042307A /* GoalDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalDAO.swift; sourceTree = "<group>"; };
+		25D075711AF2AC6E0042307A /* CategoryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryType.swift; sourceTree = "<group>"; };
 		330BE7921AF15F2400369ED8 /* HippoBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HippoBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		330BE7961AF15F2400369ED8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		330BE7971AF15F2400369ED8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +62,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25D0756A1AF2A6460042307A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				330BE79B1AF15F2400369ED8 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		25D0756B1AF2A64C0042307A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				25D0756D1AF2A69F0042307A /* Goal.swift */,
+				25D0756F1AF2A98E0042307A /* GoalDAO.swift */,
+				25D075711AF2AC6E0042307A /* CategoryType.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		25D0756C1AF2A6540042307A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				330BE7991AF15F2400369ED8 /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		330BE7891AF15F2400369ED8 = {
 			isa = PBXGroup;
 			children = (
@@ -77,9 +109,10 @@
 		330BE7941AF15F2400369ED8 /* HippoBank */ = {
 			isa = PBXGroup;
 			children = (
+				25D0756C1AF2A6540042307A /* Controller */,
+				25D0756B1AF2A64C0042307A /* Model */,
+				25D0756A1AF2A6460042307A /* View */,
 				330BE7971AF15F2400369ED8 /* AppDelegate.swift */,
-				330BE7991AF15F2400369ED8 /* ViewController.swift */,
-				330BE79B1AF15F2400369ED8 /* Main.storyboard */,
 				330BE79E1AF15F2400369ED8 /* Images.xcassets */,
 				330BE7A01AF15F2400369ED8 /* LaunchScreen.xib */,
 				330BE7951AF15F2400369ED8 /* Supporting Files */,
@@ -213,7 +246,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				330BE79A1AF15F2400369ED8 /* ViewController.swift in Sources */,
+				25D0756E1AF2A69F0042307A /* Goal.swift in Sources */,
 				330BE7981AF15F2400369ED8 /* AppDelegate.swift in Sources */,
+				25D075701AF2A98E0042307A /* GoalDAO.swift in Sources */,
+				25D075721AF2AC6E0042307A /* CategoryType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +445,7 @@
 				330BE7B31AF15F2400369ED8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		330BE7B41AF15F2400369ED8 /* Build configuration list for PBXNativeTarget "HippoBankTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +454,7 @@
 				330BE7B61AF15F2400369ED8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
