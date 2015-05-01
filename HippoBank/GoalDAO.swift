@@ -64,6 +64,8 @@ class GoalDAO {
         
         goal.id = numGoals
         
+        self.savedInformation.setInteger(goal.id, forKey: "GOAL_ID_\(goal.id)")
+        
         self.savedInformation.setObject(goal.name, forKey: "GOAL_NAME_\(goal.id)")
         self.savedInformation.setFloat(goal.price, forKey: "GOAL_PRICE_\(goal.id)")
         self.savedInformation.setFloat(goal.moneySaved, forKey: "GOAL_SAVED_\(goal.id)")
@@ -84,9 +86,40 @@ class GoalDAO {
     
     }
     
-    func deleteGoal(id: Int){
+    func deleteGoal(id: Int, goal: Goal) -> Bool{
+
+        var i: Int
+        i=0
+        var numGoals: Int
+        numGoals = self.savedInformation.integerForKey("NUM_GOALS")
         
-        //toda vez que algum for removido, precisamos diminuir 1 dos indices dos goals q vem depois
+        while( i < numGoals){
+            if(i == id){
+                
+                self.savedInformation.removeObjectForKey("GOAL_NAME_\(id)")
+                self.savedInformation.removeObjectForKey("GOAL_PRICE_\(id)")
+                self.savedInformation.removeObjectForKey("GOAL_SAVED_\(id)")
+                self.savedInformation.removeObjectForKey("GOAL_PRIORITY_\(id)")
+                self.savedInformation.removeObjectForKey("GOAL_CATEGORY_\(id)")
+                
+                
+                
+                //setando Keys
+                for i; i<numGoals; i++ {
+                    goal.id == i++
+                    self.savedInformation.setInteger(i, forKey:"GOAL_ID_\(goal.id)")
+                    
+                }
+                
+                return true
+            }
+                
+            else{
+                i++
+            }
+        }
         
+        return false
     }
+    
 }
