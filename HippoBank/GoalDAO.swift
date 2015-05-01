@@ -64,7 +64,6 @@ class GoalDAO {
         
         goal.id = numGoals
         
-        self.savedInformation.setInteger(goal.id, forKey: "GOAL_ID_\(goal.id)")
         
         self.savedInformation.setObject(goal.name, forKey: "GOAL_NAME_\(goal.id)")
         self.savedInformation.setFloat(goal.price, forKey: "GOAL_PRICE_\(goal.id)")
@@ -86,40 +85,83 @@ class GoalDAO {
     
     }
     
-    func deleteGoal(id: Int, goal: Goal) -> Bool{
+    func deleteGoal(id: Int) -> [Goal]{
 
+        var name: String
+        var price: Float
+        var moneySaved: Float
+        var priority: Int
+        var categoryType: String
+        
         var i: Int
-        i=0
+        i = 0
+        
+        var goalsAfterDelete: [Goal] = []
+        
+        var position = id
+        
         var numGoals: Int
         numGoals = self.savedInformation.integerForKey("NUM_GOALS")
         
-        while( i < numGoals){
-            if(i == id){
+        /* exemplo: Tinhamos 4 goals, que estão salvos da seguinte forma:
+                Goal_0
+                Goal_1
+                Goal_2
+                Goal_3
                 
-                self.savedInformation.removeObjectForKey("GOAL_NAME_\(id)")
-                self.savedInformation.removeObjectForKey("GOAL_PRICE_\(id)")
-                self.savedInformation.removeObjectForKey("GOAL_SAVED_\(id)")
-                self.savedInformation.removeObjectForKey("GOAL_PRIORITY_\(id)")
-                self.savedInformation.removeObjectForKey("GOAL_CATEGORY_\(id)")
+           sopunhamos que vamos tirar o goal_1, vou enviar para a função o id dele, 1
+
+           precisamos repassar as informações dos proximos goals para a posição deste que foi retirado
                 
+         //somando 1 no id vamos pra proxima posição
+         position++
                 
+         */
                 
-                //setando Keys
-                for i; i<numGoals; i++ {
-                    goal.id == i++
-                    self.savedInformation.setInteger(i, forKey:"GOAL_ID_\(goal.id)")
-                    
-                }
-                
-                return true
-            }
-                
-            else{
-                i++
-            }
-        }
+          //rearrumando as keys a partir do proximo goal após o que foi retirado
         
-        return false
+          position++
+        
+          for i = position; i < numGoals; i++ {
+            
+            name = self.savedInformation.stringForKey("GOAL_NAME_\(i)")! //pegando info deste goal
+                    
+            self.savedInformation.setObject(name, forKey: "GOAL_NAME_\(i-1)") //pego o que estava neste goal e coloco na posição anterior
+                    
+            //realizo a mesma operação para todas as informações, price, moneySaved, priority, categoryType...
+                    
+            }
+        
+        /* voltando ao nosso exemplo:
+        Agora temos o seguinte
+        
+        Goal_0
+        Goal_1 ( com as informações que estavam em Goal_2 )
+        Goal_2 ( com as informações que estavam em Goal_3 )
+        Goal_3
+        
+        Tem alguma coisa errada neh? As infos que estavam em Goal_1 antes, sumiram, pois escrevemos em cima delas o que estava em Goal_2, porém o Goal_3 esta repetido
+        
+        Mas se diminuirmos 1 do numero total de goals
+        numGoals = numGoals - 1;
+        
+        e salvarmos isso: self.savedInformation.setInteger(numGoals, forKey: "NUM_GOALS")
+        
+        na proxima vez que formos ler iremos ignorar esse Goal_3. 
+        
+        Pronto, LINDO :D
+        */
+        
+        numGoals = numGoals - 1;
+        self.savedInformation.setInteger(numGoals, forKey: "NUM_GOALS")
+        
+        
+        //lendo a memória novamente para conseguirmos a lista sem o cara q deletamos
+        goalsAfterDelete = self.searchGoals()
+        
+        
+        // retorna a lista sem o que deletamos
+        return goalsAfterDelete
     }
     
 }
