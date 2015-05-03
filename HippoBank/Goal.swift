@@ -10,12 +10,16 @@ import UIKit
 
 class Goal
 {
-    var name: String
+    var name: String!
     var id: Int!
-    var price: Float
-    var moneySaved: Float
-    var categoryType: CategoryType
-    var priority: Int
+    var price: Float!
+    var moneySaved: Float!
+    var categoryType: CategoryType!
+    var priority: Int!
+    
+    init(){
+        
+    }
     
     init (name: String, price: Float, moneySaved: Float, priority: Int, categoryType: CategoryType)
     {
@@ -25,4 +29,5 @@ class Goal
         self.priority = priority
         self.categoryType = categoryType
     }
+
 }
