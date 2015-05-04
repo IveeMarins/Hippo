@@ -45,10 +45,10 @@
             </objects>
             <point key="canvasLocation" x="1353" y="86"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--HippoNC-->
         <scene sceneID="A0d-Ky-cw3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LeE-GK-KxY" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LeE-GK-KxY" customClass="HippoNC" customModule="HippoBank" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mpd-9W-LcZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
