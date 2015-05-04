@@ -20,6 +20,9 @@ class AddGoalView : UIView{
     var priceText : UITextField!;
     var moneySavedText : UITextField!;
     var categoryTypeText : UITextField!;
+    
+    var priority : UILabel!;
+    var sliderPriority : UISlider!;
 
     init(view: UIView, parent: UIViewController) {
         super.init(frame: view.frame);
@@ -91,9 +94,22 @@ class AddGoalView : UIView{
         
         categoryTypeText = UITextField(frame: CGRectMake(spacing, moneySavedText.frame.origin.y + altura, area.width, altura))
         categoryTypeText.font = UIFont(name: "AvenirNext-Regular", size: 18)
-        categoryTypeText.autocorrectionType = UITextAutocorrectionType.No;
         categoryTypeText.placeholder = "Categories"
         categoryTypeText.inputView = UIPickerView();
+        
+        var priorityLabel = UILabel(frame: CGRectMake(spacing,categoryTypeText.frame.origin.y + altura/2, area.width * 0.3, area.width * 0.33));
+        priorityLabel.text = "Priority";
+        priorityLabel.font = UIFont(name: "AvenirNext-Regular", size: 18)
+
+        priority = UILabel(frame: CGRectMake(spacing + area.width * 0.33 ,categoryTypeText.frame.origin.y + altura/2, area.width * 0.3,area.width * 0.33));
+        priority.text = "Low";
+        priority.font = UIFont(name: "AvenirNext-Regular", size: 15)
+
+        
+        sliderPriority = UISlider(frame: CGRectMake(priority.frame.width + area.width * 0.33,categoryTypeText.frame.origin.y + altura/2, 100,100));
+        sliderPriority.minimumValue = 1;
+        sliderPriority.maximumValue = 3;
+        
         
         var lineView : UIView = UIView (frame: CGRectMake(0, altura/1, area.width, 1))
         lineView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.7);
@@ -118,6 +134,9 @@ class AddGoalView : UIView{
         tela.addSubview(cancelButton)
         tela.addSubview(saveButton)
         tela.addSubview(categoryTypeText)
+        tela.addSubview(priorityLabel)
+        tela.addSubview(priority)
+        tela.addSubview(sliderPriority)
         tela.addSubview(lineView)
         tela.addSubview(lineView1)
         tela.addSubview(lineView2)

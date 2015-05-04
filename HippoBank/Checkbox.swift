@@ -52,9 +52,6 @@ class Checkbox: UIButton {
             }
             
         }
-        
-        
-        
     }
     
 }
