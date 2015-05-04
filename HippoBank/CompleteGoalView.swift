@@ -54,10 +54,9 @@ class CompleteGoalView: UIView {
         happyHippo.contentMode = UIViewContentMode.ScaleAspectFit;
         
         //adicionar a view que criei na view pra aparecer na tela principal//
+        view.addSubview(blurView);
         blurView.addSubview(completeLabel)
         blurView.addSubview(happyHippo)
-        
-        
         
     }
 

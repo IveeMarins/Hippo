@@ -25,10 +25,21 @@ class VC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         listGoalView.tableView.reloadData();
     }
     
+    
+    func youDidIt(notification: NSNotification){
+        println("did It");
+        
+        var completeVC = CompleteVC();
+        completeVC.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext;
+        presentViewController(completeVC, animated: true, completion: nil);
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refresh:", name:"addedGoal", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "youDidIt:", name:"didIt",
+            object: nil)
         
         listGoalView = ListGoalView(view: view, parent: self);
         addGoalItem = UIBarButtonItem(image: UIImage(named: "addButton"), style: .Plain, target: self, action: "onAdd:");

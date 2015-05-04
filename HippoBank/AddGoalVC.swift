@@ -38,6 +38,8 @@ class AddGoalVC : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         
         if(goal != nil){
             
+            addView.title.text = "Edit Goal";
+            
             addView.nomeText.text = goal!.name
             addView.priceText.text = String(stringInterpolationSegment: goal!.price * 10)
             priceCurrencyDidChange(addView.priceText)
@@ -139,8 +141,7 @@ class AddGoalVC : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                 }
                 
                 GoalDAO.sharedInstance.saveGoal(newGoal)
-            }
-            else{
+            }else{
                 GoalDAO.sharedInstance.deleteGoal(goal!.id)
                 
                 goal?.name = addView.nomeText.text;
@@ -160,8 +161,20 @@ class AddGoalVC : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                 
                 
                 GoalDAO.sharedInstance.saveGoal(goal!)
+                
+                if(goal?.moneySaved >= goal?.price){
+
+                    dismissViewControllerAnimated(true, completion: nil)
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName("addedGoal", object: nil);
+                    NSNotificationCenter.defaultCenter().postNotificationName("didIt", object: nil);
+                    
+                    return;
+                    
+                }
+                
             }
-     
+            
             NSNotificationCenter.defaultCenter().postNotificationName("addedGoal", object: nil);
             dismissViewControllerAnimated(true, completion: nil)
         }
