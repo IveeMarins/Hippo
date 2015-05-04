@@ -111,7 +111,7 @@ class AddGoalView : UIView{
         lineView4.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.7);
         
         //adicionar a view que criei na view pra aparecer na tela principal//
-        blurView.addSubview(newLabel)
+        blurView.addSubview(title)
         tela.addSubview(nomeText)
         tela.addSubview(priceText)
         tela.addSubview(moneySavedText)
