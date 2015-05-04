@@ -81,19 +81,25 @@ class GoalCell : UITableViewCell {
         
         imagePriorityLow = UIImageView(frame: CGRectMake(cellWidth - cellHeight*0.3,cellHeight*0.7, cellHeight*0.18 , cellHeight*0.18));
         imagePriorityLow.image = UIImage(named: "favorite");
+        imagePriorityLow.contentMode = UIViewContentMode.ScaleAspectFit;
         
         imagePriorityMedium = UIImageView(frame: CGRectMake(imagePriorityLow.frame.origin.x - cellHeight*0.3, cellHeight*0.7, cellHeight*0.18 , cellHeight*0.18));
         imagePriorityMedium.image = UIImage(named: "favorite");
+        imagePriorityMedium.contentMode = UIViewContentMode.ScaleAspectFit;
         
         imagePriorityHigh = UIImageView(frame: CGRectMake(imagePriorityMedium.frame.origin.x - cellHeight*0.3, cellHeight*0.7, cellHeight*0.18 , cellHeight*0.18));
         imagePriorityHigh.image = UIImage(named: "favorite");
+        imagePriorityHigh.contentMode = UIViewContentMode.ScaleAspectFit;
         
         imagePriorityLow.hidden = true;
         imagePriorityMedium.hidden = true;
         imagePriorityHigh.hidden = true;
         
+        layoutMargins = UIEdgeInsetsZero;
+        preservesSuperviewLayoutMargins = false;
+        selectionStyle = UITableViewCellSelectionStyle.None;
+        
         self.addSubview(categoryImage);
-        //categoryImage.addSubview(labelCategory);
         self.addSubview(labelName);
         self.addSubview(labelTotalPrice);
         self.addSubview(labelMoneySaved);

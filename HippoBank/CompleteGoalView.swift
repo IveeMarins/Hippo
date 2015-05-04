@@ -20,10 +20,6 @@ class CompleteGoalView: UIView {
         let altura:CGFloat =  view.frame.height*0.08;
         let alturaLabel:CGFloat = view.frame.height*0.09
         
-        
-        //happyHippo.image = UIImage(named: "")
-        
-        
         // Blur Effect
         var blur = UIBlurEffect(style: UIBlurEffectStyle.Dark)
         var blurView = UIVisualEffectView(effect: blur)
@@ -37,6 +33,7 @@ class CompleteGoalView: UIView {
         
         //definindo que eh a view eh a tela//
         var tela : UIView = UIView(frame: area)
+        
         //acessando uma propriedade da tela(UIView) alterando as bordas//
         tela.layer.cornerRadius = 5
         tela.backgroundColor = UIColor.UIColorFromRGB(0x1bb478)
@@ -47,6 +44,18 @@ class CompleteGoalView: UIView {
         completeLabel.text = "You Did It!!"
         completeLabel.textColor = UIColor.whiteColor()
         completeLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 36)
+        
+        
+        var width  = frame.width;
+        var height  = frame.height;
+        
+        happyHippo = UIImageView(frame: CGRectMake(width * 0.15, height*0.5,width * 0.7,height * 0.4));
+        happyHippo.image = UIImage(named: "hippoEmptyList");
+        happyHippo.contentMode = UIViewContentMode.ScaleAspectFit;
+        
+        //adicionar a view que criei na view pra aparecer na tela principal//
+        blurView.addSubview(completeLabel)
+        blurView.addSubview(happyHippo)
         
         
         
