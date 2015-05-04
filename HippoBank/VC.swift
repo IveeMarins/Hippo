@@ -13,6 +13,7 @@ class VC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var tableView : UITableView!;
     var goals : [Goal]!
     var addGoalItem : UIBarButtonItem!;
+    var listGoalView : ListGoalView!;
     
     required init(coder aDecoder: NSCoder) {
         goals = GoalDAO.sharedInstance.getGoalsArray();
@@ -21,15 +22,14 @@ class VC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        listGoalView = ListGoalView(view: view, parent: self);
         addGoalItem = UIBarButtonItem(image: UIImage(named: "addButton"), style: .Plain, target: self, action: "onAdd:");
         navigationItem.rightBarButtonItem = addGoalItem;
         navigationItem.leftBarButtonItem = editButtonItem();
         
-        tableView = UITableView(frame: view.frame);
-        tableView.dataSource = self;
-        tableView.delegate = self;
-        tableView.backgroundColor = UIColor.UIColorFromRGB(0x1bb478);
-        view.addSubview(tableView);
+        listGoalView.tableView.dataSource = self;
+        listGoalView.tableView.delegate = self;
     }
     
     func onAdd(sender: AnyObject) {
@@ -48,7 +48,6 @@ class VC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool{
-        
         return true
     }
     
@@ -62,7 +61,7 @@ class VC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     override func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated);
-        tableView.setEditing(editing, animated: animated);
+        listGoalView.tableView.setEditing(editing, animated: animated);
     }
     
     func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
@@ -79,6 +78,13 @@ class VC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (goals.count == 0){
+            listGoalView.emptyView.hidden = false;
+            listGoalView.tableView.hidden = true;
+        }else{
+            listGoalView.emptyView.hidden = true;
+            listGoalView.tableView.hidden = false;
+        }
         return goals.count;
     }
     
@@ -93,7 +99,6 @@ class VC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         goalCell.labelName.text = goals[indexPath.row].name.capitalizedString;
         goalCell.labelTotalPrice.text = NSString(format:"R$ %.2f", goals[indexPath.row].price) as String;
         goalCell.labelMoneySaved.text = NSString(format:"R$ %.2f", goals[indexPath.row].moneySaved) as String;
-//        goalCell.labelCategory.text = goals[indexPath.row].categoryType.description;
         goalCell.categoryImage.image = UIImage(named: CategoryType.getCategoryImage(goals[indexPath.row].categoryType.description));
         
         var priority = goals[indexPath.row].priority;
