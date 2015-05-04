@@ -65,17 +65,53 @@ class AddGoalVC : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     
     func saveAction(sender: UIButton){
         
-        var goal = Goal()
-        goal.name = addView.nomeText.text;
-        goal.price = Float(price)
-        goal.moneySaved = Float(moneySaved)
-        goal.categoryType = CategoryType.convert(addView.categoryTypeText.text)
-        goal.priority = Int(addView.sliderPriority.value)
         
-        GoalDAO.sharedInstance.saveGoal(goal)
+        if(addView.nomeText.text == ""){
+            
+            var alert = UIAlertController(title: "Missing name", message: "Please complete the name field", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        else if(addView.priceText.text == ""){
+            
+            var alert = UIAlertController(title: "Missing price", message: "Please complete the price field", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        }
+        else if(addView.categoryTypeText.text == ""){
+            
+            var alert = UIAlertController(title: "Missing category", message: "Please pick a category", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        }
+        else{
+            
+            if(addView.moneySavedText.text == ""){
+                moneySaved = 0;
+            }
+            
+            var goal = Goal()
+            goal.name = addView.nomeText.text;
+            goal.price = Float(price)
+            goal.moneySaved = Float(moneySaved)
+            goal.categoryType = CategoryType.convert(addView.categoryTypeText.text)
+           
+            if(addView.priority.text == "Low"){
+                goal.priority = 1
+            }
+            else if(addView.priority.text == "Medium"){
+                goal.priority = 2
+            }
+            else{
+                goal.priority = 3
+            }
         
-        dismissViewControllerAnimated(true, completion: nil)
+            GoalDAO.sharedInstance.saveGoal(goal)
         
+            dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     func dismissKeyBoard (sender: UIButton){
