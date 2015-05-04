@@ -4,11 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--VC-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="HippoBank" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="VC" customModule="HippoBank" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -19,9 +18,32 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="71z-hA-eh2"/>
+                    <connections>
+                        <segue destination="jHX-Lh-EqZ" kind="push" id="J5c-Or-uRu"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="677" y="86"/>
+            <point key="canvasLocation" x="601" y="86"/>
+        </scene>
+        <!--Add GoalVC-->
+        <scene sceneID="kJ5-ti-dU9">
+            <objects>
+                <viewController id="jHX-Lh-EqZ" customClass="AddGoalVC" customModule="HippoBank" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L8o-my-cm3"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Z9-ZF-S1V"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XSP-dk-Aff">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="OYg-r6-V3z"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a1m-Ul-PNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1353" y="86"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="A0d-Ky-cw3">

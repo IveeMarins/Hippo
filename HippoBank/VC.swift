@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class VC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var tableView : UITableView!;
     var goals : [Goal]!
@@ -34,12 +34,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func onAdd(sender: AnyObject) {
         println("criou");
-        var goal : Goal = Goal(name: "Xbox 360", price: 100004.00, moneySaved: 20000.00, priority: 0, categoryType: CategoryType.Cars);
         
-        GoalDAO.sharedInstance.saveGoal(goal)
+        var addGoal = AddGoalVC();
+        addGoal.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext;
+        presentViewController(addGoal, animated: true, completion: nil);
         
-        goals = GoalDAO.sharedInstance.getGoalsArray();
-        tableView.reloadData();
+//        var goal : Goal = Goal(name: "Xbox 360", price: 100004.00, moneySaved: 20000.00, priority: 0, categoryType: CategoryType.Cars);
+//        
+//        GoalDAO.sharedInstance.saveGoal(goal)
+//        
+//        goals = GoalDAO.sharedInstance.getGoalsArray();
+//        tableView.reloadData();
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool{
