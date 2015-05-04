@@ -42,6 +42,7 @@ class ListGoalView : UIView {
         emptyView.hidden = true;
         
         tableView = UITableView(frame: view.frame);
+        tableView.separatorInset = UIEdgeInsetsZero;
         tableView.backgroundColor = UIColor.UIColorFromRGB(0x1bb478);
         view.backgroundColor = UIColor.UIColorFromRGB(0x1bb478);
 
