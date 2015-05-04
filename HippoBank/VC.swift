@@ -38,13 +38,7 @@ class VC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         var addGoal = AddGoalVC();
         addGoal.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext;
         presentViewController(addGoal, animated: true, completion: nil);
-        
-//        var goal : Goal = Goal(name: "Xbox 360", price: 100004.00, moneySaved: 20000.00, priority: 0, categoryType: CategoryType.Cars);
-//        
-//        GoalDAO.sharedInstance.saveGoal(goal)
-//        
-//        goals = GoalDAO.sharedInstance.getGoalsArray();
-//        tableView.reloadData();
+
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool{

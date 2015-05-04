@@ -32,6 +32,19 @@ class AddGoalVC : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
 
         currencyFormatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
         
+        addView.sliderPriority.addTarget(self, action: "changeSlider:", forControlEvents: UIControlEvents.ValueChanged);
+    }
+    
+    func changeSlider(sender: UISlider){
+        println("slider");
+        if (sender.value <= 1){
+            addView.priority.text = "Low";
+        }else if (sender.value <= 2){
+            addView.priority.text = "Medium";
+        }else{
+            addView.priority.text = "High";
+        }
+
     }
     
     func savedCurrencyDidChange(textField: UITextField) {
