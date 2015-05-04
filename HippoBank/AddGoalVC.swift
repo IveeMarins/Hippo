@@ -26,9 +26,9 @@ class AddGoalVC : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         (addView.categoryTypeText.inputView as! UIPickerView).dataSource = self;
         
         addView.moneySavedText.addTarget(self, action: "textFieldCurrencyDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        addView.priceText.addTarget(self, action: "textFieldCurrencyDidChange:", forControlEvents: UIControlEvents.EditingChanged)
 
         currencyFormatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
-        currencyFormatter.currencyCode = NSLocale.currentLocale().displayNameForKey(NSLocaleCurrencySymbol, value: NSLocaleCurrencyCode)!
         
     }
     
