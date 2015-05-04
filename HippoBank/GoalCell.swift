@@ -64,7 +64,7 @@ class GoalCell : UITableViewCell {
         labelTotalDesc.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
         labelTotalDesc.textAlignment = NSTextAlignment.Left;
         labelTotalDesc.textColor = UIColor.UIColorFromRGB(0x792a90);
-        labelTotalDesc.text = "Total";
+        labelTotalDesc.text = "Price";
         
         labelMoneySaved = UILabel(frame: CGRectMake(cellWidth/2,cellHeight*0.5, cellWidth/2 - cellHeight*0.1 , cellHeight*0.2));
         labelMoneySaved.font = UIFont(name: "Avenir Next", size: 20)
@@ -77,7 +77,7 @@ class GoalCell : UITableViewCell {
         labelMoneySavedDesc.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
         labelMoneySavedDesc.textAlignment = NSTextAlignment.Left;
         labelMoneySavedDesc.textColor = UIColor.blackColor()
-        labelMoneySavedDesc.text = "Guardado";
+        labelMoneySavedDesc.text = "Saved";
         
         imagePriorityLow = UIImageView(frame: CGRectMake(cellWidth - cellHeight*0.3,cellHeight*0.7, cellHeight*0.18 , cellHeight*0.18));
         imagePriorityLow.image = UIImage(named: "favorite");

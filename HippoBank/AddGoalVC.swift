@@ -57,11 +57,9 @@ class AddGoalVC : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         goal.price = Float(price)
         goal.moneySaved = Float(moneySaved)
         goal.categoryType = CategoryType.convert(addView.categoryTypeText.text)
-        
-        NSLog(goal.name)
+        goal.priority = 0
        
-        //GoalDAO.sharedInstance.saveGoal(goal)
-        
+        GoalDAO.sharedInstance.saveGoal(goal)
         
         dismissViewControllerAnimated(true, completion: nil)
         
