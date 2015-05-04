@@ -7,9 +7,12 @@
 //
 import UIKit
 
-class AddGoalVC : UIViewController{
+class AddGoalVC : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var addView : AddGoalView!;
+    var categories = CategoryType.getCategoryArray();
+    let currencyFormatter = NSNumberFormatter();
+
     
     //IR PARA PARTE DE VIEW
     override func viewDidLoad(){
@@ -17,12 +20,53 @@ class AddGoalVC : UIViewController{
         
         addView.cancelButton.addTarget(self, action: "cancelAction:", forControlEvents: UIControlEvents.TouchUpInside)
         addView.saveButton.addTarget(self, action: "saveAction:", forControlEvents: UIControlEvents.TouchUpInside)
-        addView.dismissButton.addTarget(self, action: "dismiss:", forControlEvents: UIControlEvents.TouchUpInside)
+        addView.dismissButton.addTarget(self, action: "dismissKeyBoard:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        (addView.categoryTypeText.inputView as! UIPickerView).delegate = self;
+        (addView.categoryTypeText.inputView as! UIPickerView).dataSource = self;
+        
+        addView.moneySavedText.addTarget(self, action: "textFieldCurrencyDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+
+        currencyFormatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        currencyFormatter.currencyCode = NSLocale.currentLocale().displayNameForKey(NSLocaleCurrencySymbol, value: NSLocaleCurrencyCode)!
         
     }
     
-    func dismiss (sender: UIButton){
-        println("dismiss")
+    func textFieldCurrencyDidChange(textField: UITextField) {
+        var text = textField.text.stringByReplacingOccurrencesOfString(currencyFormatter.currencySymbol!, withString: "").stringByReplacingOccurrencesOfString(currencyFormatter.groupingSeparator, withString: "").stringByReplacingOccurrencesOfString(currencyFormatter.decimalSeparator!, withString: "")
+        addView.moneySavedText.text = currencyFormatter.stringFromNumber((text as NSString).doubleValue / 100.0)
+    }
+    
+    func cancelAction (sender: UIButton){
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func dismissKeyBoard (sender: UIButton){
+        addView.categoryTypeText.resignFirstResponder();
+        addView.nomeText.resignFirstResponder();
+        addView.priceText.resignFirstResponder();
+        addView.moneySavedText.resignFirstResponder();
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1;
+    }
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if(categories.count == 0){
+            return 1;
+        }
+        return categories.count;
+    }
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        if(categories.count == 0){
+            return "No subjects available";
+        }
+        return categories[row];
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if(row < categories.count){
+            addView.categoryTypeText.text = categories[row];
+        }
     }
 }

@@ -93,7 +93,7 @@ class VC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         goalCell.labelName.text = goals[indexPath.row].name.capitalizedString;
         goalCell.labelTotalPrice.text = NSString(format:"R$ %.2f", goals[indexPath.row].price) as String;
         goalCell.labelMoneySaved.text = NSString(format:"R$ %.2f", goals[indexPath.row].moneySaved) as String;
-        goalCell.labelCategory.text = goals[indexPath.row].categoryType.description;
+//        goalCell.labelCategory.text = goals[indexPath.row].categoryType.description;
         goalCell.categoryImage.image = UIImage(named: CategoryType.getCategoryImage(goals[indexPath.row].categoryType.description));
         
         var priority = goals[indexPath.row].priority;

@@ -11,15 +11,15 @@ import UIKit
 
 class AddGoalView : UIView{
     
-    var nomeText : UITextField!;
-    var priceText : UITextField!;
-    var moneySavedText : UITextField!;
-
     var cancelButton : UIButton!;
     var dismissButton : UIButton!;
     var saveButton : UIButton!;
-    var addSubject : UITextField!;
     
+    var nomeText : UITextField!;
+    var priceText : UITextField!;
+    var moneySavedText : UITextField!;
+    var categoryTypeText : UITextField!;
+
     init(view: UIView, parent: UIViewController) {
         super.init(frame: view.frame);
         
@@ -33,7 +33,7 @@ class AddGoalView : UIView{
         
         //declaracao da area e definicao do tamanho//
         var area:CGRect = CGRectMake(view.frame.width*0.05, view.frame.height*0.2, view.frame.width*0.90
-            , altura*5);
+            , altura*6);
         
         //definindo que eh a view eh a tela//
         var tela : UIView = UIView(frame: area)
@@ -88,10 +88,11 @@ class AddGoalView : UIView{
         moneySavedText.placeholder = "Money Saved"
         moneySavedText.keyboardType = UIKeyboardType.NumberPad
         
-        addSubject = UITextField(frame: CGRectMake(spacing, moneySavedText.frame.origin.y + altura, area.width, altura))
-        addSubject.font = UIFont(name: "AvenirNext-Regular", size: 18)
-        addSubject.autocorrectionType = UITextAutocorrectionType.No;
-        addSubject.placeholder = "Add more subjects"
+        categoryTypeText = UITextField(frame: CGRectMake(spacing, moneySavedText.frame.origin.y + altura, area.width, altura))
+        categoryTypeText.font = UIFont(name: "AvenirNext-Regular", size: 18)
+        categoryTypeText.autocorrectionType = UITextAutocorrectionType.No;
+        categoryTypeText.placeholder = "Categories"
+        categoryTypeText.inputView = UIPickerView();
         
         var lineView : UIView = UIView (frame: CGRectMake(0, altura/1, area.width, 1))
         lineView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.7);
@@ -104,6 +105,9 @@ class AddGoalView : UIView{
         
         var lineView3 : UIView = UIView (frame: CGRectMake(0, moneySavedText.frame.origin.y + altura/1, area.width, 1))
         lineView3.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.7);
+
+        var lineView4 : UIView = UIView (frame: CGRectMake(0, categoryTypeText.frame.origin.y + altura/1, area.width, 1))
+        lineView4.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.7);
         
         //adicionar a view que criei na view pra aparecer na tela principal//
         blurView.addSubview(newLabel)
@@ -112,11 +116,12 @@ class AddGoalView : UIView{
         tela.addSubview(moneySavedText)
         tela.addSubview(cancelButton)
         tela.addSubview(saveButton)
-        tela.addSubview(addSubject)
+        tela.addSubview(categoryTypeText)
         tela.addSubview(lineView)
         tela.addSubview(lineView1)
         tela.addSubview(lineView2)
         tela.addSubview(lineView3)
+        tela.addSubview(lineView4)
 
     }
     

@@ -43,6 +43,7 @@ enum CategoryType{
             default: return .Clothes
             }
     }
+
     
     static func getCategoryImage(description: String) -> String{
         
@@ -50,16 +51,17 @@ enum CategoryType{
         {
         case "Clothes": return "categoryClothes"
         case "Games": return "categoryGames"
-        case "Eletronics": return "categoryEletronics"
-        case "Education": return "categoryEducations"
-        case "Traveling": return "categoryTravels"
-        case "Books": return "categoryBooks"
-        case "Furniture": return "categoryFurnitures"
-        case "Cars": return "categoryCars"
-        case "Properties": return "categoryProperties"
+        case "Eletronics": return "categoryEletronic"
+        case "Education": return "categoryEducation"
+        case "Traveling": return "categoryTravel"
+        case "Books": return "categoryBook"
+        case "Furniture": return "categoryFurniture"
+        case "Cars": return "categoryCar"
+        case "Properties": return "categoryPropertie"
         default: return ""
         }
     }
+
     
     static func getCategoryArray() -> [String]{
         
@@ -78,5 +80,5 @@ enum CategoryType{
         return categories
         
     }
-    
+
 }

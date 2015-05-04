@@ -35,18 +35,18 @@ class GoalCell : UITableViewCell {
         var cellHeight = view.frame.height/3.5;
         var cellWidth = view.frame.width;
         
-        categoryImage = UIImageView(frame: CGRectMake(cellHeight*0.1,cellHeight*0.1, cellHeight*0.6, cellHeight*0.6));
+        categoryImage = UIImageView(frame: CGRectMake(0,cellHeight*0.1, cellHeight*0.8, cellHeight*0.8));
         categoryImage.image = UIImage(named: "categoryClothes");
         categoryImage.contentMode = UIViewContentMode.ScaleAspectFit;
         
-        labelCategory = UILabel(frame: CGRectMake(categoryImage.bounds.origin.x,
-            cellHeight*0.8 - 20,
-            categoryImage.frame.width,
-            cellHeight*0.1));
-        labelCategory.font = UIFont(name: "AvenirNext-DemiBold", size: 15);
-        labelCategory.textColor = UIColor.UIColorFromRGB(0x792a90);
-        //labelCategory.text = goals[indexPath.row].categoryType.description;
-        labelCategory.textAlignment = NSTextAlignment.Center;
+//        labelCategory = UILabel(frame: CGRectMake(categoryImage.bounds.origin.x,
+//            cellHeight*0.8 - 20,
+//            categoryImage.frame.width,
+//            cellHeight*0.1));
+//        labelCategory.font = UIFont(name: "AvenirNext-DemiBold", size: 15);
+//        labelCategory.textColor = UIColor.UIColorFromRGB(0x792a90);
+//        //labelCategory.text = goals[indexPath.row].categoryType.description;
+//        labelCategory.textAlignment = NSTextAlignment.Center;
         
         labelName = UILabel(frame: CGRectMake(cellWidth/2,cellHeight*0.1, cellWidth/2 - cellHeight*0.1 , cellHeight*0.2));
         labelName.font = UIFont(name: "AvenirNext-DemiBold", size: 30)
@@ -93,7 +93,7 @@ class GoalCell : UITableViewCell {
         imagePriorityHigh.hidden = true;
         
         self.addSubview(categoryImage);
-        categoryImage.addSubview(labelCategory);
+        //categoryImage.addSubview(labelCategory);
         self.addSubview(labelName);
         self.addSubview(labelTotalPrice);
         self.addSubview(labelMoneySaved);
