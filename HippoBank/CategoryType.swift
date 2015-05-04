@@ -61,5 +61,22 @@ enum CategoryType{
         }
     }
     
+    static func getCategoryArray() -> [String]{
+        
+        var categories: [String] = []
+        
+        categories.append("Clothes")
+        categories.append("Games")
+        categories.append("Eletronics")
+        categories.append("Education")
+        categories.append("Traveling")
+        categories.append("Books")
+        categories.append("Furniture")
+        categories.append("Cars")
+        categories.append("Properties")
+        
+        return categories
+        
+    }
     
 }
