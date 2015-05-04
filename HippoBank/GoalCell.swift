@@ -39,16 +39,7 @@ class GoalCell : UITableViewCell {
         categoryImage.image = UIImage(named: "categoryClothes");
         categoryImage.contentMode = UIViewContentMode.ScaleAspectFit;
         
-//        labelCategory = UILabel(frame: CGRectMake(categoryImage.bounds.origin.x,
-//            cellHeight*0.8 - 20,
-//            categoryImage.frame.width,
-//            cellHeight*0.1));
-//        labelCategory.font = UIFont(name: "AvenirNext-DemiBold", size: 15);
-//        labelCategory.textColor = UIColor.UIColorFromRGB(0x792a90);
-//        //labelCategory.text = goals[indexPath.row].categoryType.description;
-//        labelCategory.textAlignment = NSTextAlignment.Center;
-        
-        labelName = UILabel(frame: CGRectMake(cellWidth/2,cellHeight*0.1, cellWidth/2 - cellHeight*0.1 , cellHeight*0.2));
+        labelName = UILabel(frame: CGRectMake(cellWidth * 0.33,cellHeight*0.1, cellWidth*0.57, cellHeight*0.2));
         labelName.font = UIFont(name: "AvenirNext-DemiBold", size: 30)
         labelName.textAlignment = NSTextAlignment.Right;
         labelName.textColor = UIColor.whiteColor();
@@ -79,15 +70,15 @@ class GoalCell : UITableViewCell {
         labelMoneySavedDesc.textColor = UIColor.blackColor()
         labelMoneySavedDesc.text = "Saved";
         
-        imagePriorityLow = UIImageView(frame: CGRectMake(cellWidth - cellHeight*0.3,cellHeight*0.7, cellHeight*0.18 , cellHeight*0.18));
+        imagePriorityLow = UIImageView(frame: CGRectMake(cellWidth - cellHeight*0.3,cellHeight*0.75, cellHeight*0.18 , cellHeight*0.18));
         imagePriorityLow.image = UIImage(named: "favorite");
         imagePriorityLow.contentMode = UIViewContentMode.ScaleAspectFit;
         
-        imagePriorityMedium = UIImageView(frame: CGRectMake(imagePriorityLow.frame.origin.x - cellHeight*0.3, cellHeight*0.7, cellHeight*0.18 , cellHeight*0.18));
+        imagePriorityMedium = UIImageView(frame: CGRectMake(imagePriorityLow.frame.origin.x - cellHeight*0.3, cellHeight*0.75, cellHeight*0.18 , cellHeight*0.18));
         imagePriorityMedium.image = UIImage(named: "favorite");
         imagePriorityMedium.contentMode = UIViewContentMode.ScaleAspectFit;
         
-        imagePriorityHigh = UIImageView(frame: CGRectMake(imagePriorityMedium.frame.origin.x - cellHeight*0.3, cellHeight*0.7, cellHeight*0.18 , cellHeight*0.18));
+        imagePriorityHigh = UIImageView(frame: CGRectMake(imagePriorityMedium.frame.origin.x - cellHeight*0.3, cellHeight*0.75, cellHeight*0.18 , cellHeight*0.18));
         imagePriorityHigh.image = UIImage(named: "favorite");
         imagePriorityHigh.contentMode = UIViewContentMode.ScaleAspectFit;
         

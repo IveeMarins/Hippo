@@ -20,8 +20,15 @@ class VC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         super.init(coder: aDecoder);
     }
     
+    func refresh(notification: NSNotification){
+        goals = GoalDAO.sharedInstance.getGoalsArray();
+        listGoalView.tableView.reloadData();
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refresh:", name:"addedGoal", object: nil)
         
         listGoalView = ListGoalView(view: view, parent: self);
         addGoalItem = UIBarButtonItem(image: UIImage(named: "addButton"), style: .Plain, target: self, action: "onAdd:");
@@ -30,8 +37,6 @@ class VC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         listGoalView.tableView.dataSource = self;
         listGoalView.tableView.delegate = self;
-        //tableView.reloadData()
-        
     }
     
     func onAdd(sender: AnyObject) {
@@ -101,9 +106,9 @@ class VC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         var priority = goals[indexPath.row].priority;
         
-        if (priority == 0){
+        if (priority == 1){
             goalCell.imagePriorityLow.hidden = false;
-        }else if (priority == 1){
+        }else if (priority == 2){
             goalCell.imagePriorityLow.hidden = false;
             goalCell.imagePriorityMedium.hidden = false;
         }else{

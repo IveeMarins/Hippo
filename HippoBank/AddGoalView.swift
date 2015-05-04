@@ -107,7 +107,7 @@ class AddGoalView : UIView{
 
         
         sliderPriority = UISlider(frame: CGRectMake(priority.frame.width + area.width * 0.33,categoryTypeText.frame.origin.y + altura/2, 100,100));
-        sliderPriority.minimumValue = 1;
+        sliderPriority.minimumValue = 0;
         sliderPriority.maximumValue = 3;
         
         
