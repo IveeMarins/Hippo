@@ -39,9 +39,10 @@ class VC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         var addGoal = AddGoalVC();
         addGoal.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext;
         presentViewController(addGoal, animated: true, completion: nil);
-        
+
         goals = GoalDAO.sharedInstance.getGoalsArray();
         
+
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool{
