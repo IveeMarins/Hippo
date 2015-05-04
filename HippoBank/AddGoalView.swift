@@ -15,6 +15,7 @@ class AddGoalView : UIView{
     var dismissButton : UIButton!;
     var saveButton : UIButton!;
     
+    var title : UILabel!;
     var nomeText : UITextField!;
     var priceText : UITextField!;
     var moneySavedText : UITextField!;
@@ -52,11 +53,11 @@ class AddGoalView : UIView{
         let spacing:CGFloat = area.width*0.05;
         let spacingLabel: CGFloat = (blurView.frame).width*0.18
         
-        var newLabel : UILabel = UILabel(frame: CGRectMake(spacingLabel, alturaLabel, area.width*0.7, alturaLabel/2))
-        newLabel.textAlignment = NSTextAlignment.Center
-        newLabel.text = "New Goal"
-        newLabel.textColor = UIColor.whiteColor()
-        newLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 28)
+        title = UILabel(frame: CGRectMake(spacingLabel, alturaLabel, area.width*0.7, alturaLabel/2))
+        title.textAlignment = NSTextAlignment.Center
+        title.text = "New Goal"
+        title.textColor = UIColor.whiteColor()
+        title.font = UIFont(name: "AvenirNext-DemiBold", size: 28)
         
         //botao pra cancelar
         cancelButton = UIButton(frame: CGRectMake(spacing, altura/4, area.width*0.22, altura/2))

@@ -12,6 +12,8 @@ class AddGoalVC : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     var addView : AddGoalView!;
     var categories = CategoryType.getCategoryArray();
     let currencyFormatter = NSNumberFormatter();
+    var price : Double!;
+    var moneySaved : Double!;
 
     
     //IR PARA PARTE DE VIEW
@@ -25,16 +27,23 @@ class AddGoalVC : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         (addView.categoryTypeText.inputView as! UIPickerView).delegate = self;
         (addView.categoryTypeText.inputView as! UIPickerView).dataSource = self;
         
-        addView.moneySavedText.addTarget(self, action: "textFieldCurrencyDidChange:", forControlEvents: UIControlEvents.EditingChanged)
-        addView.priceText.addTarget(self, action: "textFieldCurrencyDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        addView.moneySavedText.addTarget(self, action: "savedCurrencyDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        addView.priceText.addTarget(self, action: "priceCurrencyDidChange:", forControlEvents: UIControlEvents.EditingChanged)
 
         currencyFormatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
         
     }
     
-    func textFieldCurrencyDidChange(textField: UITextField) {
+    func savedCurrencyDidChange(textField: UITextField) {
         var text = textField.text.stringByReplacingOccurrencesOfString(currencyFormatter.currencySymbol!, withString: "").stringByReplacingOccurrencesOfString(currencyFormatter.groupingSeparator, withString: "").stringByReplacingOccurrencesOfString(currencyFormatter.decimalSeparator!, withString: "")
         addView.moneySavedText.text = currencyFormatter.stringFromNumber((text as NSString).doubleValue / 100.0)
+        moneySaved = (text as NSString).doubleValue / 100.0
+    }
+    
+    func priceCurrencyDidChange(textField: UITextField) {
+        var text = textField.text.stringByReplacingOccurrencesOfString(currencyFormatter.currencySymbol!, withString: "").stringByReplacingOccurrencesOfString(currencyFormatter.groupingSeparator, withString: "").stringByReplacingOccurrencesOfString(currencyFormatter.decimalSeparator!, withString: "")
+        addView.priceText.text = currencyFormatter.stringFromNumber((text as NSString).doubleValue / 100.0)
+        price = (text as NSString).doubleValue / 100.0
     }
     
     func cancelAction (sender: UIButton){
