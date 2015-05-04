@@ -38,19 +38,25 @@ class AddGoalVC : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         
         if(goal != nil){
             
-            addView.nomeText.text = goal?.name
-            addView.priceText.text = String(stringInterpolationSegment: goal?.price)
-            addView.moneySavedText.text = String(stringInterpolationSegment: goal?.moneySaved)
-            addView.categoryTypeText.text = goal?.categoryType.description
-            if(goal?.priority == 1){
-                addView.priority.text = "Low"
-            }
-            else if(goal?.priority == 2){
-                addView.priority.text == "Medium"
+            addView.nomeText.text = goal!.name
+            addView.priceText.text = String(stringInterpolationSegment: goal!.price * 10)
+            priceCurrencyDidChange(addView.priceText)
+            addView.moneySavedText.text = String(stringInterpolationSegment: goal!.moneySaved * 10)
+            savedCurrencyDidChange(addView.moneySavedText);
+            
+            addView.categoryTypeText.text = goal!.categoryType.description
+            
+            if(goal!.priority == 1){
+                addView.sliderPriority.value = 1;
+                addView.priority.text = "Low";
                 
-            }
-            else{
-                addView.priority.text == "High"
+            }else if(goal!.priority == 2){
+                addView.sliderPriority.value = 2;
+                addView.priority.text = "Medium";
+                
+            }else{
+                addView.sliderPriority.value = 3;
+                addView.priority.text = "High";
             }
             
         }
@@ -156,7 +162,6 @@ class AddGoalVC : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                 GoalDAO.sharedInstance.saveGoal(goal!)
             }
      
-            GoalDAO.sharedInstance.saveGoal(goal)
             NSNotificationCenter.defaultCenter().postNotificationName("addedGoal", object: nil);
             dismissViewControllerAnimated(true, completion: nil)
         }

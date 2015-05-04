@@ -123,7 +123,7 @@ class VC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         var addGoal = AddGoalVC();
-        GoalDAO.sharedInstance.getGoalById(indexPath.row)
+        addGoal.goal = GoalDAO.sharedInstance.getGoalById(indexPath.row)
         
         addGoal.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext;
         presentViewController(addGoal, animated: true, completion: nil);
