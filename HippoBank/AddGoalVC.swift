@@ -50,6 +50,23 @@ class AddGoalVC : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func saveAction(sender: UIButton){
+        
+        var goal = Goal()
+        goal.name = addView.nomeText.text;
+        goal.price = Float(price)
+        goal.moneySaved = Float(moneySaved)
+        goal.categoryType = CategoryType.convert(addView.categoryTypeText.text)
+        
+        NSLog(goal.name)
+       
+        //GoalDAO.sharedInstance.saveGoal(goal)
+        
+        
+        dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
     func dismissKeyBoard (sender: UIButton){
         addView.categoryTypeText.resignFirstResponder();
         addView.nomeText.resignFirstResponder();
