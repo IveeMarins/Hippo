@@ -42,7 +42,23 @@ enum CategoryType{
             case "Properties": return .Properties
             default: return .Clothes
             }
+    }
     
+    static func getCategoryImage(description: String) -> String{
+        
+        switch (description)
+        {
+        case "Clothes": return "categoryClothes"
+        case "Games": return "categoryGames"
+        case "Eletronics": return "categoryEletronics"
+        case "Education": return "categoryEducations"
+        case "Traveling": return "categoryTravels"
+        case "Books": return "categoryBooks"
+        case "Furniture": return "categoryFurnitures"
+        case "Cars": return "categoryCars"
+        case "Properties": return "categoryProperties"
+        default: return ""
+        }
     }
     
     

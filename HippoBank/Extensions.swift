@@ -1,7 +1,15 @@
+//
+//  Extensions.swift
+//  Hippo
+//
+//  Created by Haroldo Olivieri on 3/20/15.
+//
+
 import Foundation
+import UIKit
 
 extension UIColor{
-
+    
     class func UIColorFromRGB(rgbValue: UInt) -> UIColor {
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,

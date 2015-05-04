@@ -21,7 +21,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         addGoalItem = UIBarButtonItem(image: UIImage(named: "addButton"), style: .Plain, target: self, action: "onAdd:");
         navigationItem.rightBarButtonItem = addGoalItem;
         navigationItem.leftBarButtonItem = editButtonItem();
@@ -29,12 +28,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView = UITableView(frame: view.frame);
         tableView.dataSource = self;
         tableView.delegate = self;
+        tableView.backgroundColor = UIColor.UIColorFromRGB(0x1bb478);
         view.addSubview(tableView);
     }
     
     func onAdd(sender: AnyObject) {
         println("criou");
-        var goal : Goal = Goal(name: "teste", price: 124.00, moneySaved: 20, priority: 1, categoryType: CategoryType.Clothes);
+        var goal : Goal = Goal(name: "Xbox 360", price: 100004.00, moneySaved: 20000.00, priority: 0, categoryType: CategoryType.Cars);
         
         GoalDAO.sharedInstance.saveGoal(goal)
         
@@ -46,8 +46,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         return true
     }
-    
-    //editar a tela de tarefas
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
         if (editingStyle == UITableViewCellEditingStyle.Delete){
@@ -64,7 +62,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         
-        println("HOHO");
         if(tableView.editing == true){
             return UITableViewCellEditingStyle.Delete
         }
@@ -81,24 +78,34 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return view.frame.height/4;
+        return view.frame.height/3.5;
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         
-        var cell:UITableViewCell = UITableViewCell(frame: view.frame);
-        
-        //criamos o label por código com suas propriedades
-        var label = UILabel(frame: CGRectMake(0,0, view.frame.width, cell.frame.height));
-        label.font = UIFont(name: "AvenirNext-DemiBold", size: 30)
-        label.textAlignment = NSTextAlignment.Center;
-        label.text = goals[indexPath.row].name;
-        
-        cell.addSubview(label);
-        
-        return cell;
-    }
+        var goalCell : GoalCell = GoalCell(view: view);
 
+        goalCell.labelName.text = goals[indexPath.row].name.capitalizedString;
+        goalCell.labelTotalPrice.text = NSString(format:"R$ %.2f", goals[indexPath.row].price) as String;
+        goalCell.labelMoneySaved.text = NSString(format:"R$ %.2f", goals[indexPath.row].moneySaved) as String;
+        goalCell.labelCategory.text = goals[indexPath.row].categoryType.description;
+        goalCell.categoryImage.image = UIImage(named: CategoryType.getCategoryImage(goals[indexPath.row].categoryType.description));
+        
+        var priority = goals[indexPath.row].priority;
+        
+        if (priority == 0){
+            goalCell.imagePriorityLow.hidden = false;
+        }else if (priority == 1){
+            goalCell.imagePriorityLow.hidden = false;
+            goalCell.imagePriorityMedium.hidden = false;
+        }else{
+            goalCell.imagePriorityLow.hidden = false;
+            goalCell.imagePriorityMedium.hidden = false;
+            goalCell.imagePriorityHigh.hidden = false;
+        }
+        
+        return goalCell;
+    }
 
 }
 
