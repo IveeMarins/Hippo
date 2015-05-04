@@ -109,7 +109,7 @@ class AddGoalVC : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             }
         
             GoalDAO.sharedInstance.saveGoal(goal)
-        
+            NSNotificationCenter.defaultCenter().postNotificationName("addedGoal", object: nil);
             dismissViewControllerAnimated(true, completion: nil)
         }
     }
