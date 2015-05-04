@@ -14,10 +14,12 @@ class AddGoalVC : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     let currencyFormatter = NSNumberFormatter();
     var price : Double!;
     var moneySaved : Double!;
-
+    var goal: Goal?
     
     //IR PARA PARTE DE VIEW
     override func viewDidLoad(){
+        
+        
         addView = AddGoalView(view: view, parent: self);
         
         addView.cancelButton.addTarget(self, action: "cancelAction:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -33,6 +35,27 @@ class AddGoalVC : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         currencyFormatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
         
         addView.sliderPriority.addTarget(self, action: "changeSlider:", forControlEvents: UIControlEvents.ValueChanged);
+        
+        if(goal != nil){
+            
+            addView.nomeText.text = goal?.name
+            addView.priceText.text = String(stringInterpolationSegment: goal?.price)
+            addView.moneySavedText.text = String(stringInterpolationSegment: goal?.moneySaved)
+            addView.categoryTypeText.text = goal?.categoryType.description
+            if(goal?.priority == 1){
+                addView.priority.text = "Low"
+            }
+            else if(goal?.priority == 2){
+                addView.priority.text == "Medium"
+                
+            }
+            else{
+                addView.priority.text == "High"
+            }
+            
+        }
+        
+        
     }
     
     func changeSlider(sender: UISlider){
@@ -92,23 +115,48 @@ class AddGoalVC : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                 moneySaved = 0;
             }
             
-            var goal = Goal()
-            goal.name = addView.nomeText.text;
-            goal.price = Float(price)
-            goal.moneySaved = Float(moneySaved)
-            goal.categoryType = CategoryType.convert(addView.categoryTypeText.text)
-           
-            if(addView.priority.text == "Low"){
-                goal.priority = 1
-            }
-            else if(addView.priority.text == "Medium"){
-                goal.priority = 2
+            if(goal == nil){
+                var newGoal = Goal()
+                newGoal.name = addView.nomeText.text;
+                newGoal.price = Float(price)
+                newGoal.moneySaved = Float(moneySaved)
+                newGoal.categoryType = CategoryType.convert(addView.categoryTypeText.text)
+               
+                if(addView.priority.text == "Low"){
+                    newGoal.priority = 1
+                }
+                else if(addView.priority.text == "Medium"){
+                    newGoal.priority = 2
+                }
+                else{
+                    newGoal.priority = 3
+                }
+                
+                GoalDAO.sharedInstance.saveGoal(newGoal)
             }
             else{
-                goal.priority = 3
+                GoalDAO.sharedInstance.deleteGoal(goal!.id)
+                
+                goal?.name = addView.nomeText.text;
+                goal?.price = Float(price)
+                goal?.moneySaved = Float(moneySaved)
+                goal?.categoryType = CategoryType.convert(addView.categoryTypeText.text)
+                
+                if(addView.priority.text == "Low"){
+                    goal?.priority = 1
+                }
+                else if(addView.priority.text == "Medium"){
+                    goal?.priority = 2
+                }
+                else{
+                    goal?.priority = 3
+                }
+                
+                
+                GoalDAO.sharedInstance.saveGoal(goal!)
             }
-        
-            GoalDAO.sharedInstance.saveGoal(goal)
+            
+            
         
             dismissViewControllerAnimated(true, completion: nil)
         }

@@ -114,6 +114,16 @@ class VC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         return goalCell;
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        var addGoal = AddGoalVC();
+        GoalDAO.sharedInstance.getGoalById(indexPath.row)
+        
+        addGoal.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext;
+        presentViewController(addGoal, animated: true, completion: nil);
+        
+    }
 
 }
 
