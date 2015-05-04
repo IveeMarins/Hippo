@@ -18,7 +18,6 @@ class VC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     required init(coder aDecoder: NSCoder) {
         goals = GoalDAO.sharedInstance.getGoalsArray();
         super.init(coder: aDecoder);
-        
     }
     
     override func viewDidLoad() {
@@ -31,6 +30,7 @@ class VC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         listGoalView.tableView.dataSource = self;
         listGoalView.tableView.delegate = self;
+        //tableView.reloadData()
         
     }
     
