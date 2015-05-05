@@ -39,7 +39,7 @@ class GoalCell : UITableViewCell {
         categoryImage.image = UIImage(named: "categoryClothes");
         categoryImage.contentMode = UIViewContentMode.ScaleAspectFit;
         
-        labelName = UILabel(frame: CGRectMake(cellWidth * 0.33,cellHeight*0.1, cellWidth*0.57, cellHeight*0.2));
+        labelName = UILabel(frame: CGRectMake(cellWidth/2 - cellHeight*0.2,cellHeight*0.1, cellWidth*0.57, cellHeight*0.2));
         labelName.font = UIFont(name: "AvenirNext-DemiBold", size: 30)
         labelName.textAlignment = NSTextAlignment.Right;
         labelName.textColor = UIColor.whiteColor();
@@ -58,7 +58,7 @@ class GoalCell : UITableViewCell {
         labelTotalDesc.text = "Price";
         
         labelMoneySaved = UILabel(frame: CGRectMake(cellWidth/2,cellHeight*0.5, cellWidth/2 - cellHeight*0.1 , cellHeight*0.2));
-        labelMoneySaved.font = UIFont(name: "Avenir Next", size: 20)
+        labelMoneySaved.font = UIFont(name: "Avenir Next", size: 19)
         labelMoneySaved.textAlignment = NSTextAlignment.Right;
         labelMoneySaved.textColor = UIColor.blackColor();
         //labelMoneySaved.text = NSString(format:"R$ %.2f", goals[indexPath.row].moneySaved) as String;
@@ -88,7 +88,7 @@ class GoalCell : UITableViewCell {
         
         layoutMargins = UIEdgeInsetsZero;
         preservesSuperviewLayoutMargins = false;
-        selectionStyle = UITableViewCellSelectionStyle.None;
+        selectionStyle = UITableViewCellSelectionStyle.Blue;
         
         self.addSubview(categoryImage);
         self.addSubview(labelName);

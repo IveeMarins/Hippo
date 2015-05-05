@@ -57,7 +57,7 @@ enum CategoryType{
         case "Books": return "categoryBook"
         case "Furniture": return "categoryFurniture"
         case "Cars": return "categoryCar"
-        case "Properties": return "categoryPropertie"
+        case "Properties": return "categoryProperties"
         default: return ""
         }
     }

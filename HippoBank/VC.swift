@@ -139,6 +139,8 @@ class VC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         addGoal.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext;
         presentViewController(addGoal, animated: true, completion: nil);
         
+        listGoalView.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
     }
 
 }

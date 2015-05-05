@@ -16,10 +16,10 @@
 		330BE79A1AF15F2400369ED8 /* VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330BE7991AF15F2400369ED8 /* VC.swift */; };
 		330BE79D1AF15F2400369ED8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 330BE79B1AF15F2400369ED8 /* Main.storyboard */; };
 		330BE79F1AF15F2400369ED8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 330BE79E1AF15F2400369ED8 /* Images.xcassets */; };
-		330BE7A21AF15F2400369ED8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 330BE7A01AF15F2400369ED8 /* LaunchScreen.xib */; };
 		330BE7AE1AF15F2400369ED8 /* HippoBankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330BE7AD1AF15F2400369ED8 /* HippoBankTests.swift */; };
 		330EF6571AF80E3500C3443D /* CompleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330EF6561AF80E3500C3443D /* CompleteVC.swift */; };
 		3B9006671AF6D57C00D6E114 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9006661AF6D57C00D6E114 /* Extensions.swift */; };
+		3BA7539E1AF875220082EAA1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA7539D1AF875220082EAA1 /* LaunchScreen.xib */; };
 		3BBED55E1AF7E0A100D6BFBE /* AddGoalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBED55D1AF7E0A100D6BFBE /* AddGoalVC.swift */; };
 		3BBED5601AF7E16E00D6BFBE /* AddGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBED55F1AF7E16E00D6BFBE /* AddGoalView.swift */; };
 		3BBED5621AF7F7A700D6BFBE /* ListGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBED5611AF7F7A700D6BFBE /* ListGoalView.swift */; };
@@ -49,12 +49,12 @@
 		330BE7991AF15F2400369ED8 /* VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.swift; sourceTree = "<group>"; };
 		330BE79C1AF15F2400369ED8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		330BE79E1AF15F2400369ED8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		330BE7A11AF15F2400369ED8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		330BE7A71AF15F2400369ED8 /* HippoBankTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HippoBankTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		330BE7AC1AF15F2400369ED8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		330BE7AD1AF15F2400369ED8 /* HippoBankTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HippoBankTests.swift; sourceTree = "<group>"; };
 		330EF6561AF80E3500C3443D /* CompleteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteVC.swift; sourceTree = "<group>"; };
 		3B9006661AF6D57C00D6E114 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3BA7539D1AF875220082EAA1 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		3BBED55D1AF7E0A100D6BFBE /* AddGoalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGoalVC.swift; sourceTree = "<group>"; };
 		3BBED55F1AF7E16E00D6BFBE /* AddGoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGoalView.swift; sourceTree = "<group>"; };
 		3BBED5611AF7F7A700D6BFBE /* ListGoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListGoalView.swift; sourceTree = "<group>"; };
@@ -83,6 +83,7 @@
 		25D0756A1AF2A6460042307A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3BA7539D1AF875220082EAA1 /* LaunchScreen.xib */,
 				3BBED5611AF7F7A700D6BFBE /* ListGoalView.swift */,
 				3BBED55F1AF7E16E00D6BFBE /* AddGoalView.swift */,
 				3BDAEBBC1AF6E4D400BEB722 /* GoalCell.swift */,
@@ -140,7 +141,6 @@
 				25D0756A1AF2A6460042307A /* View */,
 				330BE7971AF15F2400369ED8 /* AppDelegate.swift */,
 				330BE79E1AF15F2400369ED8 /* Images.xcassets */,
-				330BE7A01AF15F2400369ED8 /* LaunchScreen.xib */,
 				25B6BBFF1AF8000300B1681B /* bensound-happyrock.mp3 */,
 				330BE7951AF15F2400369ED8 /* Supporting Files */,
 			);
@@ -252,9 +252,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BA7539E1AF875220082EAA1 /* LaunchScreen.xib in Resources */,
 				25B6BC001AF8000300B1681B /* bensound-happyrock.mp3 in Resources */,
 				330BE79D1AF15F2400369ED8 /* Main.storyboard in Resources */,
-				330BE7A21AF15F2400369ED8 /* LaunchScreen.xib in Resources */,
 				330BE79F1AF15F2400369ED8 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,14 +314,6 @@
 				330BE79C1AF15F2400369ED8 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		330BE7A01AF15F2400369ED8 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				330BE7A11AF15F2400369ED8 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
